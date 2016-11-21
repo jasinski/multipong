@@ -7,7 +7,7 @@ import java.net.*;
          DatagramSocket serverSocket = new DatagramSocket(9876);
             byte[] receiveData = new byte[1024];
             byte[] sendData = new byte[1024];
-            int i = 1;
+            int i = 2;
             while(true) {
                System.out.println("Waiting for client");
                   DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
