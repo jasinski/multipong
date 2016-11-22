@@ -13,7 +13,7 @@ import java.net.*;
                   DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
                   serverSocket.receive(receivePacket);
                   String sentence = new String( receivePacket.getData());
-                  System.out.println("RECEIVED: " + sentence);
+                  System.out.println("RECEIVED BOOOOM: " + sentence);
                   InetAddress IPAddress = receivePacket.getAddress();
                   int port = receivePacket.getPort();
                   String capitalizedSentence = sentence.toUpperCase();
