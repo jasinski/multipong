@@ -6,6 +6,8 @@ import java.net.*;
 	 
 	 public static void main(String args[]) throws Exception {
       
+		 Test test = new Test();
+		 
          DatagramSocket serverSocket = new DatagramSocket(9876);
             byte[] receiveData = new byte[1024];
             byte[] sendData = new byte[1024];
@@ -15,7 +17,7 @@ import java.net.*;
                   DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
                   serverSocket.receive(receivePacket);
                   String sentence = new String( receivePacket.getData());
-                  System.out.println("RECEIVED BOOOOM: " + sentence);
+                  System.out.println("RECEIVED BOOOOM: (" + test.value + ")" + sentence);
                   InetAddress IPAddress = receivePacket.getAddress();
                   int port = receivePacket.getPort();
                   String capitalizedSentence = sentence.toUpperCase();
