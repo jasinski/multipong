@@ -1,5 +1,5 @@
 #!/bin/bash
-java Main.java
+java Main
 
 ### COMPILE CODE
 #for i in *.java; do
