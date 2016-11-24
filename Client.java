@@ -12,7 +12,6 @@ class Client {
 		if (object instanceof Client){
 			Client ptr = (Client) object;
 			if (!ptr.ip.equals(this.ip)) return false;
-			if (ptr.port != this.port) return false;
 			return true;
 		}
 		return retVal;
