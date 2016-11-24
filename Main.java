@@ -37,7 +37,7 @@ class Main {
 				System.out.print("Sending to CLIENT: " + client.ip + ":" + client.port);
 				int port = receivePacket.getPort();
 				sendData = clientData.getBytes();
-				DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, client.ip, client.port);
+				DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, client.ip, 61991);
 				serverSocket.send(sendPacket);
 			}
 			System.out.println();
