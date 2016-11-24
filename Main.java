@@ -3,10 +3,12 @@ import java.net.*;
 import java.util.ArrayList;
 
 class Main {
-
+	
 	public static void main(String args[]) throws Exception {
 
-		ArrayList<InetAddress> ips = new ArrayList();
+		
+		
+		ArrayList<Client> clients = new ArrayList();
 
 		DatagramSocket serverSocket = new DatagramSocket(9876);
 		byte[] receiveData = new byte[1024];
@@ -20,18 +22,22 @@ class Main {
 			String clientData = new String( receivePacket.getData());
 			System.out.println(clientData);
 			
-			// Get clients IP address
-			InetAddress IPAddress = receivePacket.getAddress();
-			if (!ips.contains(IPAddress)) {
-				ips.add(IPAddress);
+			// Get clients IP address & port
+			Client latestClient = new Client();
+			latestClient.ip = receivePacket.getAddress();
+			latestClient.port = receivePacket.getPort();
+			if (clients.contains(latestClient)) {
+				clients.get(clients.indexOf(latestClient)).latestPacket = receivePacket;
+			} else {
+				clients.add(latestClient);
 			}
 			
 			
-			for (InetAddress address : ips) {
-				System.out.print("Sending to CLIENT: " + address);
+			for (Client client: clients) {
+				System.out.print("Sending to CLIENT: " + client.ip + ":" + client.port);
 				int port = receivePacket.getPort();
 				sendData = clientData.getBytes();
-				DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, address, port);
+				DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, client.ip, client.port);
 				serverSocket.send(sendPacket);
 			}
 			System.out.println();
