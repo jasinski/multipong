@@ -28,12 +28,13 @@ class Main {
 			
 			
 			for (InetAddress address : ips) {
-				System.out.println("HOSTS CONNECTED");
+				System.out.print("Sending to CLIENT: " + address);
 				int port = receivePacket.getPort();
 				sendData = clientData.getBytes();
 				DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, address, port);
 				serverSocket.send(sendPacket);
 			}
+			System.out.println();
 		}
 
 	}
