@@ -6,13 +6,15 @@
  * For more details take a look at the Java Quickstart chapter in the Gradle
  * user guide available at https://docs.gradle.org/2.11/userguide/tutorial_java_projects.html
  */
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'application'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+mainClassName = "com.multipong.Main"
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -33,4 +35,3 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-mainClassName = "com.multipong.Main"
