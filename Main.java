@@ -1,12 +1,12 @@
 import java.io.*;
-
 import java.net.*;
+import java.util.ArrayList;
 
 class Main {
 
 	public static void main(String args[]) throws Exception {
 
-		Test test = new Test();
+		ArrayList<InetAddress> ips = new ArrayList();
 
 		DatagramSocket serverSocket = new DatagramSocket(9876);
 		byte[] receiveData = new byte[1024];
@@ -17,16 +17,23 @@ class Main {
 			// Receive packet from client (s)
 			DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
 			serverSocket.receive(receivePacket);
-			String sentence = new String( receivePacket.getData());
-			System.out.println("RECEIVED BOOOOM: (" + test.value + ")" + sentence);
+			String clientData = new String( receivePacket.getData());
+			System.out.println(clientData);
 			
 			// Get clients IP address
 			InetAddress IPAddress = receivePacket.getAddress();
-			int port = receivePacket.getPort();
-			String capitalizedSentence = sentence.toUpperCase();
-			sendData = capitalizedSentence.getBytes();
-			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
-			serverSocket.send(sendPacket);
+			if (!ips.contains(IPAddress)) {
+				ips.add(IPAddress);
+			}
+			
+			
+			for (InetAddress address : ips) {
+				System.out.println("HOSTS CONNECTED");
+				int port = receivePacket.getPort();
+				sendData = clientData.getBytes();
+				DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, address, port);
+				serverSocket.send(sendPacket);
+			}
 		}
 
 	}
