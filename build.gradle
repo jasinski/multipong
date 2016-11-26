@@ -12,7 +12,6 @@ apply plugin: 'application'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
-mainClassName = "com.game.pacman.Launcher"
 
 repositories {
     jcenter()
@@ -23,3 +22,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:1.+'
 }
+
+mainClassName = "com.multipong.Main"
