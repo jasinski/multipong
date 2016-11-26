@@ -1,12 +1,11 @@
-import java.io.*;
+package com.multipong;
+
 import java.net.*;
 import java.util.ArrayList;
 
 class Main {
 	
 	public static void main(String args[]) throws Exception {
-
-		
 		
 		ArrayList<Client> clients = new ArrayList();
 

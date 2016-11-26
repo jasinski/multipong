@@ -1,3 +1,8 @@
+package com.multipong;
+
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+
 class Client {
 	public InetAddress ip;
 	public int port;
