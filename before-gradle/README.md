@@ -1,2 +1,0 @@
-# multipong
-Multiplayer pong game
