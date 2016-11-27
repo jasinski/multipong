@@ -1,4 +1,4 @@
-package com.mulitpong.server;
+package com.multipong.server;
 
 public class Main {
 
